@@ -1,122 +1,171 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+
+import { useState } from "react";
+import {
+  FiArrowUpRight,
+  FiMenu,
+  FiX
+} from "react-icons/fi";
+
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "Our Story", href: "#about" },
+    { name: "Menu", href: "#menu" },
+    { name: "Books", href: "#books" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+
+    <main>
+
+      {/* NAVBAR */}
+
+      <nav className="navbar">
+
+        <a href="#home" className="logo">
+
+          <h2>THE READING ROOM</h2>
+
+          <span>CAFÉ & BOOKSTORE</span>
+
+        </a>
+
+        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+
+          {navLinks.map((link) => (
+
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+            >
+
+              {link.name}
+
+            </a>
+
+          ))}
+
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
+
+        <a href="#contact" className="nav-button">
+
+          Visit Us <FiArrowUpRight />
+
+        </a>
+
         <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation"
         >
-          Count is {count}
+
+          {menuOpen ? <FiX /> : <FiMenu />}
+
         </button>
+
+      </nav>
+
+
+      {/* HERO SECTION */}
+
+      <section className="hero" id="home">
+
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1920"
+        >
+
+          <source
+            src="/videos/cafe-hero.mp4"
+            type="video/mp4"
+          />
+
+        </video>
+
+
+        <div className="hero-overlay"></div>
+
+
+        <div className="hero-content">
+
+          <p className="hero-tag">
+
+            <span></span>
+
+            COFFEE · BOOKS · SLOW LIVING
+
+          </p>
+
+
+          <h1>
+
+            Where Every Sip
+
+            <br />
+
+            Tells a <span>Story.</span>
+
+          </h1>
+
+
+          <p className="hero-description">
+
+            A little coffee, a good book, and a place to belong.
+            Discover a beautiful space where stories and flavours
+            come together.
+
+          </p>
+
+
+          <div className="hero-buttons">
+
+            <a href="#menu" className="primary-button">
+
+              Explore Our Menu <FiArrowUpRight />
+
+            </a>
+
+
+            <a href="#books" className="secondary-button">
+
+              Discover Books
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div className="hero-bottom">
+
+          <p>YOUR SPACE TO READ, SIP & UNWIND.</p>
+
+          <a href="#about">
+
+            SCROLL TO EXPLORE ↓
+
+          </a>
+
+        </div>
+
       </section>
 
-      <div className="ticks"></div>
+    </main>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+  );
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
 }
 
-export default App
+export default App;
