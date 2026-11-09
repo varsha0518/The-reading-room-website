@@ -419,6 +419,81 @@ function App() {
 
 </section>
 
+{/* BOOKSTORE SECTION */}
+
+<section className="books-section" id="books">
+
+  <div className="books-heading">
+    <p>OUR LITTLE LIBRARY</p>
+
+    <h2>Stories Waiting to Be <span>Discovered.</span></h2>
+
+    <p>
+      Find your next favourite book and enjoy a beautiful
+      reading experience with your coffee.
+    </p>
+  </div>
+
+  <div className="books-grid">
+
+    <BookCard
+      image="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=700"
+      name="The Great Gatsby"
+      author="F. Scott Fitzgerald"
+      genre="Classic Fiction"
+      description="A story of love, dreams, wealth and the American Dream."
+      price="₹350"
+    />
+
+    <BookCard
+      image="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=700"
+      name="Pride and Prejudice"
+      author="Jane Austen"
+      genre="Romance"
+      description="A timeless romantic story about love, family and society."
+      price="₹299"
+    />
+
+    <BookCard
+      image="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=700"
+      name="The Alchemist"
+      author="Paulo Coelho"
+      genre="Adventure"
+      description="A beautiful journey about following your dreams."
+      price="₹399"
+    />
+
+    <BookCard
+      image="https://images.unsplash.com/photo-1513001900722-370f803f498d?w=700"
+      name="It Ends With Us"
+      author="Colleen Hoover"
+      genre="Romance"
+      description="An emotional story about love, courage and difficult choices."
+      price="₹450"
+    />
+
+    <BookCard
+      image="https://images.unsplash.com/photo-1511108690759-009324a90311?w=700"
+      name="The Silent Patient"
+      author="Alex Michaelides"
+      genre="Psychological Thriller"
+      description="A gripping mystery about a woman who refuses to speak."
+      price="₹380"
+    />
+
+    <BookCard
+      image="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=700"
+      name="Atomic Habits"
+      author="James Clear"
+      genre="Self Development"
+      description="Learn how small daily habits can create remarkable changes."
+      price="₹499"
+    />
+
+  </div>
+
+</section>
+
 
     </main>
 
@@ -427,6 +502,45 @@ function App() {
 }
 
 export default App;
+
+// BOOK CARD COMPONENT
+
+function BookCard({ image, name, author, genre, description, price }) {
+
+  return (
+
+    <article className="book-card">
+
+      <div className="book-image">
+        <img src={image} alt={name} loading="lazy" />
+      </div>
+
+      <div className="book-details">
+
+        <span className="book-genre">{genre}</span>
+
+        <h3>{name}</h3>
+
+        <p className="book-author">By {author}</p>
+
+        <p className="book-description">
+          {description}
+        </p>
+
+        <div className="book-bottom">
+          <span className="book-price">{price}</span>
+
+          <button className="book-button">
+            Explore Book
+          </button>
+        </div>
+
+      </div>
+
+    </article>
+
+  );
+}
 
 function FoodCard({ image, name, description, price }) {
 
